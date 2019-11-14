@@ -1,2 +1,4 @@
 # 10xSession2
-HASH MAPS AND TABLES
+1. HASH MAPS AND TABLES
+## 
+2. Optimization using multithreading
