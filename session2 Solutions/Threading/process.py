@@ -1,5 +1,5 @@
 from threading import Thread
-from queue import Queue
+from Queue import Queue
 import time
 
 class Process:
@@ -11,23 +11,23 @@ class Process:
 	def start(self):
 		self.thread.start()
 		return self
-
 	def returnNumber(self):
 		if self.stopped:
-			return
+			return self
 		else:
 			while True:
-				if self.Q.qsize() >0:
-					value = self.Q.get()
-					print("Hello the output is "+ str(value))
+				if self.Q.qsize():
+					time.sleep(0.1)
+				elif self.stopped:
+					self.thread.join()
+					return self
 				else:
-					time.sleep(0.5)
+					print("The square number is:",self.Q.get()**2)
 
 	def putInQ(self, number):
 		self.Q.put(number)
 		return self
 
 	def stop(self):
-		self.stopped == True
-		self.thread.join()
+		self.stopped==True
 		return self
